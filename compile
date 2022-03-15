@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+"$GRAALVM_HOME/bin/native-image" \
+    -g \
+    -O0 \
+    -cp bcprov-jdk15on-170.jar:. \
+    -H:+ReportExceptionStackTraces \
+    -H:+TraceSecurityServices \
+    --trace-class-initialization=org.bouncycastle.jce.provider.BouncyCastleProvider \
+    --verbose \
+    --no-fallback \
+    "-J-Xmx3g" \
+    App
